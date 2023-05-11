@@ -25,12 +25,6 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
         use: ['file-loader'],
-      //   use {
-      //   loader: 'file-loader',
-      //   options: {
-      //     'file?name=favicon.ico',
-      //   },
-      //}
       }      
     ],
   },
