@@ -2,6 +2,8 @@ import '../public/style.css';
 import '../public/favicon.ico';
 import { getPasswordStrength, generatePassword } from './password-generator.js';
 
+let fadeState = true;
+
 let passwordLength = 0;
 let includeUpperChecked  = false;
 let includeLowerChecked  = false;
@@ -17,6 +19,8 @@ const includeNumber = document.querySelector("#password-number")
 const includeSymbol = document.querySelector("#password-symbol")
 const passwordText = document.querySelector("#password-text")
 const refreshButton = document.querySelector("#password-refresh")
+const copyButton = document.querySelector("#password-copy")
+const toaster = document.querySelector("#toaster")
 
 includeUpperChecked  = includeUpper.checked;
 includeLowerChecked  = includeLower.checked;
@@ -25,6 +29,14 @@ includeSymbolChecked = includeSymbol.checked;
 
 value.textContent = input.value;
 passwordLength = input.value;
+
+copyButton.addEventListener("click", () => {
+  passwordText.select();  
+  passwordText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(passwordText.value);
+  fade(false);
+  setTimeout(() => fade(true), 500);
+});
 
 input.addEventListener("input", (event) => {
   passwordLength = event.target.value;
@@ -72,3 +84,14 @@ refreshButton.addEventListener("click", () => {
   passwordText.value = password;
   console.log(password);
 });
+
+
+function fade(fadeSate) {
+  let div = document.querySelector("toaster");
+  if (fadeState == true) {
+    toaster.style.animation = "fade-in 1s forwards";
+  } else if (fadeState == false) {
+    toaster.style.animation = "fade-out 1s forwards";
+  }
+  fadeState = !fadeState;
+}
