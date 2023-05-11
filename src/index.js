@@ -36,7 +36,7 @@ copyButton.addEventListener("click", () => {
   passwordText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(passwordText.value);
   fade(false);
-  setTimeout(() => fade(true), 500);
+  setTimeout(() => fade(true), 1000);
 });
 
 input.addEventListener("input", (event) => {
@@ -89,9 +89,9 @@ refreshButton.addEventListener("click", () => {
 function fade(fadeSate) {
   let div = document.querySelector("toaster");
   if (fadeState == true) {
-    toaster.style.animation = "fade-in 1s forwards";
+    toaster.style.animation = "fade-in 2s forwards";
   } else if (fadeState == false) {
-    toaster.style.animation = "fade-out 1s forwards";
+    toaster.style.animation = "fade-out 2s forwards";
   }
   fadeState = !fadeState;
 }
