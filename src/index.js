@@ -31,6 +31,7 @@ value.textContent = input.value;
 passwordLength = input.value;
 
 copyButton.addEventListener("click", () => {
+  if (passwordText.value === "") return;
   passwordText.select();  
   passwordText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(passwordText.value);
