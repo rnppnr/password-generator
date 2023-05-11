@@ -86,7 +86,6 @@ refreshButton.addEventListener("click", () => {
   console.log(password);
 });
 
-
 function fade(fadeSate) {
   let div = document.querySelector("toaster");
   if (fadeState == true) {
