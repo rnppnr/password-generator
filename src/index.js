@@ -1,6 +1,9 @@
 import '../public/style.css';
 import '../public/favicon.ico';
-import { getPasswordStrength, generatePassword } from './password-generator.js';
+import {
+  getPasswordStrength,
+  generatePassword
+} from './password-generator.js';
 
 let fadeState = true;
 
@@ -31,63 +34,57 @@ value.textContent = input.value;
 passwordLength = input.value;
 
 copyButton.addEventListener("click", () => {
-  if (passwordText.value === "") return;
+  const password = passwordText.value;
+  if (password === "") return;
   passwordText.select();  
   passwordText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(passwordText.value);
+  navigator.clipboard.writeText(password);
   fade(false);
   setTimeout(() => fade(true), 1000);
 });
 
 input.addEventListener("input", (event) => {
-  passwordLength = event.target.value;
+  const passwordLength = event.target.value;
   value.textContent = passwordLength;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  (passwordStrength !== "") ? strength.textContent = passwordStrength : strength.textContent = "";
-  const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  passwordText.value = password;
+  strength.textContent = passwordStrength !== "" ?  passwordStrength : "";
+  passwordText.value = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
 })
 
 includeUpper.addEventListener("change", (event) => {
-  (event.target.checked) ? includeUpperChecked = true : includeUpperChecked = false;
+  includeUpperChecked = event.target.checked;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  (passwordStrength !== "") ? strength.textContent = passwordStrength : strength.textContent = "";
-  const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  passwordText.value = password;
+  strength.textContent = passwordStrength !== "" ?  passwordStrength : "";
+  passwordText.value = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
 });
 
 includeLower.addEventListener("change", (event) => {
-  (event.target.checked) ? includeLowerChecked = true : includeLowerChecked = false;
+  includeLowerChecked = event.target.checked;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  (passwordStrength !== "") ? strength.textContent = passwordStrength : strength.textContent = "";
+  strength.textContent = passwordStrength !== "" ?  passwordStrength : "";
   const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
   passwordText.value = password;
 });
 
 includeNumber.addEventListener("change", (event) => {
-  (event.target.checked) ? includeNumberChecked = true : includeNumberChecked = false;
+  includeNumberChecked = event.target.checked;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  (passwordStrength !== "") ? strength.textContent = passwordStrength : strength.textContent = "";
-  const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  passwordText.value = password;
+  strength.textContent = passwordStrength !== "" ? passwordStrength : "";
+  passwordText.value = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
 });
 
 includeSymbol.addEventListener("change", (event) => {
-  (event.target.checked) ? includeSymbolChecked = true : includeSymbolChecked = false;
+  includeSymbolChecked = event.target.checked;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  (passwordStrength !== "") ? strength.textContent = passwordStrength : strength.textContent = "";
-  const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  passwordText.value = password;
+  strength.textContent = passwordStrength !== "" ? passwordStrength : "";
+  passwordText.value = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
 });
 
 refreshButton.addEventListener("click", () => {
-  const password = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
-  passwordText.value = password;
-  console.log(password);
+  passwordText.value = generatePassword(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
 });
 
 function fade(fadeSate) {
-  let div = document.querySelector("toaster");
   if (fadeState == true) {
     toaster.style.animation = "fade-in 2s forwards";
   } else if (fadeState == false) {
