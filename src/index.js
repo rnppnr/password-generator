@@ -44,7 +44,7 @@ copyButton.addEventListener("click", () => {
 });
 
 input.addEventListener("input", (event) => {
-  const passwordLength = event.target.value;
+  passwordLength = event.target.value;
   value.textContent = passwordLength;
   const passwordStrength = getPasswordStrength(includeUpperChecked, includeLowerChecked, includeNumberChecked, includeSymbolChecked, passwordLength);
   strength.textContent = passwordStrength !== "" ?  passwordStrength : "";
