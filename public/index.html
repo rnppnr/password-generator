@@ -1,75 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <title>Password Generator</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <center>
+        <div class="toaster" id="toaster">Password copied to clipboard</div>
+      </center>
 
-  <div class="container">
+      <section class="password-form">
+        <h1>Password Generator</h1>
 
-    <center>
-      <div class="toaster" id="toaster">Password copied to clipboard</div>
-    </center>
-
-    <section class="password-form">
-
-      <h1>Password Generator</h1>
-
-      <div class="password-text">
-        <div>
-          <input type="text" id="password-text" name="password-text" value="" readonly>
-        </div>
-        <div class="password-text-btn">
+        <div class="password-text">
           <div>
-            <span class="password-copy" id="password-copy">&#128196;</span>
+            <input
+              type="text"
+              id="password-text"
+              name="password-text"
+              value=""
+              readonly
+            />
           </div>
-          <div>
-            <span class="password-refresh" id="password-refresh">&#x21bb;</span>
-          </div>        
-        </div>
-      </div>
-
-      <div class="form-items">
-        <div class="password-length">
-          <div>Password length:</div>
-          <div><output id="value"></output></div>
-        </div>
-        <input type="range" id="password-length" name="password-length" min="1" max="64" value="0" width="20rem">
-
-        <div class="password-upper">
-          <div>Include uppercase letters</div>
-          <div><input type="checkbox" id="password-upper" name="password-upper"></div>
+          <div class="password-text-btn">
+            <div>
+              <span class="password-copy" id="password-copy">&#128196;</span>
+            </div>
+            <div>
+              <span class="password-refresh" id="password-refresh"
+                >&#x21bb;</span
+              >
+            </div>
+          </div>
         </div>
 
-        <div class="password-lower">
-          <div>Include lowercase letters</div>
-          <div><input type="checkbox" id="password-lower" name="password-lower"></div>
-        </div>        
+        <p class="password-info">
+          The full password generated may not be visible.
+        </p>
+        <p class="password-info">
+          Use the copy button to select the full password.
+        </p>
+        <div class="form-items">
+          <div class="password-length">
+            <div>Password length:</div>
+            <div><output id="value"></output></div>
+          </div>
+          <input
+            type="range"
+            id="password-length"
+            name="password-length"
+            min="1"
+            max="64"
+            value="0"
+            width="20rem"
+          />
 
-        <div class="password-number">
-          <div>Include numbers</div>
-          <div><input type="checkbox" id="password-number" name="password-number"></div>
+          <div class="password-upper">
+            <div>Include uppercase letters</div>
+            <div>
+              <input
+                type="checkbox"
+                id="password-upper"
+                name="password-upper"
+              />
+            </div>
+          </div>
+
+          <div class="password-lower">
+            <div>Include lowercase letters</div>
+            <div>
+              <input
+                type="checkbox"
+                id="password-lower"
+                name="password-lower"
+              />
+            </div>
+          </div>
+
+          <div class="password-number">
+            <div>Include numbers</div>
+            <div>
+              <input
+                type="checkbox"
+                id="password-number"
+                name="password-number"
+              />
+            </div>
+          </div>
+
+          <div class="password-symbol">
+            <div>Include symbols</div>
+            <div>
+              <input
+                type="checkbox"
+                id="password-symbol"
+                name="password-symbol"
+              />
+            </div>
+          </div>
+
+          <div class="password-strength">
+            <div>Strength</div>
+            <div><output id="strength"></output></div>
+          </div>
         </div>
-
-        <div class="password-symbol">
-          <div>Include symbols</div>
-          <div><input type="checkbox" id="password-symbol" name="password-symbol"></div>
-        </div>        
-
-        <div class="password-strength">
-          <div>Strength</div>
-          <div><output id="strength"></output> </div>
-        </div>
-
-      </div>
-
-    </section>
-
-  </div>
-  
-</body>
+      </section>
+    </div>
+  </body>
 </html>
